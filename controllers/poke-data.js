@@ -52,7 +52,12 @@ const updatePokemon = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   const pokemon = {
     name: req.body.name,
-    
+    number: req.body.number,
+    type: req.body.type,
+    image: req.body.image,
+    shiny: req.body.shiny,
+    height: req.body.height,
+    weight: req.body.weight
   };
   const response = await mongodb
     .getDb()

@@ -69,7 +69,7 @@ content-type: application/json
 }
 
 ###
- DELETE http://localhost:8080/poke-data/63c8cb6f7dd09b95331edd2e HTTP/1.1 content-type: application/json
+ DELETE http://localhost:8080/poke-data/63c8cdee7dd09b95331edd2f HTTP/1.1 content-type: application/json
 
 ###
- DELETE https://pokemon-419y.onrender.com/poke-data/63c8cb76003350cdebd0610c HTTP/1.1 content-type: application/json
+ DELETE https://pokemon-419y.onrender.com/poke-data/63c8cdfff96116928e8a74ed HTTP/1.1 content-type: application/json
