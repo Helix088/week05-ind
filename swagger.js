@@ -5,7 +5,7 @@ const doc = {
     title: "Chase's Contact API",
     description: "Contact API",
   },
-  host: "",
+  host: "pokemon-419y.onrender.com",
   schemes: ["https"],
 };
 
