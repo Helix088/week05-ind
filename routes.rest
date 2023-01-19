@@ -1,0 +1,51 @@
+// LOCALHOST 
+### 
+GET http://localhost:8080/poke-data 
+
+### 
+GET http://localhost:8080/poke-data/(id goes here)
+
+// PRODUCTION Deploy 
+### 
+GET https://pokemon-419y.onrender.com/poke-data HTTP/1.1 content-type: application/json
+
+### 
+GET https://pokemon-419y.onrender.com/poke-data/(id goes here) HTTP/1.1 content-type: application/json
+
+###
+POST http://localhost:8080/poke-data HTTP/1.1 content-type: application/json
+content-type: application/json
+
+{
+    
+}
+
+###
+POST https://pokemon-419y.onrender.com/poke-data HTTP/1.1 content-type: application/json
+content-type: application/json
+
+{
+    
+}
+
+###
+PUT http://localhost:8080/poke-data/(id goes here) HTTP/1.1 content-type: application/json
+content-type: application/json
+
+{
+    
+}
+
+###
+PUT https://pokemon-419y.onrender.com/poke-data/(id goes here) HTTP/1.1 content-type: application/json
+content-type: application/json
+
+{
+    
+}
+
+###
+ DELETE http://localhost:8080/poke-data/(id goes here) HTTP/1.1 content-type: application/json
+
+###
+ DELETE https://pokemon-419y.onrender.com/poke-data/(id goes here) HTTP/1.1 content-type: application/json
