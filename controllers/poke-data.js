@@ -2,24 +2,34 @@ const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId;
 
 const getPokeData = async (req, res) => {
-  const result = await mongodb.getDb().db("poke-data").collection("pokemon").find();
-  result.toArray().then((lists) => {
+  const result = await mongodb.getDb().db("poke-data").collection("pokemon").find().toArray((err, lists) => {
+    if (err) {
+      res.status(400).json({ message: err });
+    }
+  }).then((lists) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(lists);
   });
 };
 
 const getPokemon = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid Pokemon id to find Pokemon.')
+  }
   const userId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
     .db("poke-data")
     .collection("pokemon")
-    .find({ _id: userId });
-  result.toArray().then((lists) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(lists[0]);
-  });
+    .find({ _id: userId }).toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+    })
+    .then((lists) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(lists[0]);
+    });
 };
 
 const createPokemon = async (req, res) => {
@@ -49,6 +59,9 @@ const createPokemon = async (req, res) => {
 };
 
 const updatePokemon = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid Pokemon id to update Pokemon.')
+  }
   const userId = new ObjectId(req.params.id);
   const pokemon = {
     name: req.body.name,
@@ -77,6 +90,9 @@ const updatePokemon = async (req, res) => {
 };
 
 const deletePokemon = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid Pokemon id to delete Pokemon.')
+  }
   const userId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDb()
